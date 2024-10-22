@@ -1,0 +1,107 @@
+POST http://localhost:3000/create
+Content-Type: application/json
+
+{
+  "fullName": "John Doe",
+  "role": "USER",
+  "username": "johndoe",
+  "password": "Test1234"
+}
+
+### LOGIN
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "kalashinkov",
+  "password": "Test1234"
+}
+
+### GET ALL USERS
+
+GET http://localhost:3000/users/USER
+
+### GET A USER
+GET http://localhost:3000/user/eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImthbGFzaGlua292IiwiaWQiOiI2NzE2YzEwZDMzOTI0YzNlYmJkMzUxZTMifQ.t-qPiiHtKby4wFxivcH0MMoFAiIGg4Q2myuR3aSkL-g
+
+### CREATE A BOOK
+POST http://localhost:3000/create-book
+Content-Type: application/json
+
+{
+  "title": "The Long trip",
+  "pages": 120,
+  "published": 2000,
+  "author": "Joe Cole",
+  "thumbnail": "no_thumb_nail_for_now",
+  "pdfUrl": "no_pdf_url_for_now",
+  "ISBN": "213695103"
+}
+
+### GET BOOKS
+GET http://localhost:3000/books
+
+### GET BOOK
+GET http://localhost:3000/book/6717842393bf1243ed5a0899
+
+### UPDATE BOOK
+PATCH http://localhost:3000/book/6717842393bf1243ed5a0899
+Content-Type: application/json
+
+{
+ "book": { 
+    "title": "Should we do this?",
+    "pages": 50,
+    "published": 2023
+  }
+}
+
+### SOFT DELETE BOOK
+PUT http://localhost:3000/book/6717842393bf1243ed5a0899
+
+### HARD DELETE
+DELETE http://localhost:3000/book/6717842393bf1243ed5a0899
+
+### CREATE COMMENT
+POST http://localhost:3000/create-comment
+Content-Type: application/json
+
+{
+  "comment": {
+    "contents": "The author did not do a good job",
+    "owner": {
+      "fullName": "John Doe", 
+      "_id": "6716c15b7b576d331a5ee8ba"
+    },
+    "book": "67179072702a598ec3c9da30"
+  }
+}
+
+
+### GET BOOK COMMENTS
+GET http://localhost:3000/book-comments/67179072702a598ec3c9da30/ACCEPTED
+
+### UPDATE COMMENT
+POST http://localhost:3000/comment/6717a761f0b103d48bc66254
+Content-Type: application/json
+
+{
+  "status": "ACCEPTED"
+}
+
+### ADD NOTE
+POST http://localhost:3000/create-note/
+Content-Type: application/json
+
+{
+  "contents": "This is what I think of the book",
+  "owner": {
+    "fullName": "John Doe", 
+    "_id": "6716c15b7b576d331a5ee8ba"
+  },
+  "book": "67179072702a598ec3c9da30"
+}
+
+
+### GET USER BOOK NOTES
+GET http://localhost:3000/book-notes/67179072702a598ec3c9da30/6716c15b7b576d331a5ee8ba
